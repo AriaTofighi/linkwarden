@@ -54,6 +54,6 @@ HEALTHCHECK --interval=30s \
             --retries=3 \
             CMD [ "/usr/bin/curl", "--silent", "--fail", "http://127.0.0.1:3003/" ]
 
-EXPOSE 3003 # <--- THIS LINE IS NOW CORRECT
+EXPOSE 3003
 
 CMD ["sh", "-c", "yarn prisma:deploy && yarn concurrently:start"]
