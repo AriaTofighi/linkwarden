@@ -9,11 +9,12 @@ services:
     env_file: .env
     environment:
       - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD}@postgres:5432/postgres
+      - PORT=3003 # <--- ADDED: Explicitly set the application's listening port
     restart: always
-    # build: . # uncomment to build from source
-    image: ghcr.io/linkwarden/linkwarden:latest # comment to build from source
+    build: . # <--- UNCOMMENTED: Coolify will build from your Dockerfile
+    # image: ghcr.io/linkwarden/linkwarden:latest # <--- COMMENTED OUT: No longer pulling pre-built image
     ports:
-      - 3003:3003
+      - 3003:3003 # <--- CHANGED: External and internal port is 3003
     volumes:
       - ./data:/data/data
     depends_on:
